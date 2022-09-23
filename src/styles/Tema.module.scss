@@ -1,0 +1,44 @@
+@import './variaveis';
+@import './breakpoints';
+
+.divFundoDefault{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0px;
+}
+
+.titulo {
+    color: $corPadraoTexto;
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+.corBotaoOperacao{
+    background-color: #ECEF54;
+    color: #28704D;
+    box-shadow: 2px 4px 4px #0000009F;
+    cursor: pointer;
+    font-size: 20px;
+    width: 30%;
+    border: none;
+    border-radius: 5px;
+    &:hover {
+        background-color: #b6b839;
+        box-shadow: 2px 2px 4px #0000009F inset;
+      }
+}
+
+.container {
+    padding: 50px $padding-horizontal;
+    @media (max-width: $desktop_xsm) {
+      padding: 50px $padding-horizontal-mobile;
+    }
+    @media (min-width: $desktop_xsm) and (max-width: $desktop_sm) {
+      padding: 50px $padding-horizontal-sm;
+    }
+    @media (min-width: $desktop_sm) and (max-width: $desktop_md) {
+      padding: 50px $padding-horizontal-md;
+    }
+  }

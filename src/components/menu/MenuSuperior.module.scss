@@ -1,0 +1,70 @@
+@import 'styles/breakpoints';
+@import 'styles/variaveis';
+
+.divLogo{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 20%;
+    // background-color: yellow;
+}
+
+.divConteudo{
+    width: 90%;
+    height: 300px;
+    background-color: white;
+}
+
+.divMenuSuperior{
+    align-items: right;
+    width: 100%;
+    height: 25px;
+    background-color: #C79195;
+    box-shadow: 5px 5px 10px grey;
+    position: relative;
+}
+.divFundoMenuAgendamento{
+    align-items: center;
+    width: 90%;
+    height: 155px;
+    background-color: #4F4142;
+    box-shadow: 5px 5px 10px grey;
+    position: relative;
+}
+
+.divAcessoLateral{
+    width: 100%;
+    height: 90px;
+    background-color: #A07076;
+    position: relative;
+}
+
+.divFundoAcessoLateral{
+    width: 100%;
+    // background-color: green;
+    position: relative;
+}
+
+.divFundoTituloAgendamento{
+    width: 100%;
+    position: relative;
+    padding-left: 12px;
+    color: #ECEF54;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 25px;
+}
+
+.divCamposAgendamento{
+    width: 100%;
+    background-color: white;
+    opacity: 0.3;
+}
+
+.divFundoCamposAgendamento{
+    align-items: center;
+    // background-color: grey;
+    padding-left: 20px;
+    padding-right: 20px;
+}

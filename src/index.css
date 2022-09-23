@@ -1,13 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #EDE2E3;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  font-family: 'Capriola', sans-serif;
+}
+
+#root > main.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.corTextoPadrao{
+  color: #3D1A1D;
+}
+
+.fundoBase{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 40px;
 }

@@ -1,0 +1,68 @@
+@import 'styles/variaveis';
+
+.fundoDefault {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 37%;
+    background-color: #A07076;
+    padding: 62px 20px 20px 20px;
+    border-radius: 0 0 0 80px;
+  }
+
+.fundoPopUp {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 97%;
+    background-color: #FFFFFF;
+    padding: 10px 20px 45px 20px;
+    border-radius: 0 60px 0 60px;
+    border-style: dashed;
+    border-color: #A07076;
+  }
+
+  .formularioLogin{
+    padding: 15px;
+    width: 100%;
+  }
+
+  .formularioBotaoEntrar{
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+  }
+
+  .camposLogin{
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    border: solid;
+    border-color: #3D1A1D;
+    display: flex;
+    gap: 18px;
+    height: 42px;
+    justify-content: space-between;
+    padding: 0 15px;
+    width: 100%;
+    @media (max-width: 768) {
+      width: 100%;
+    }
+    input {
+        background-color: white;
+        border: none;
+        font-size: 10px;
+        font-weight: bold;
+        outline: none;
+        width: 100%;
+        &::placeholder {
+          color: $corPadraoTexto;
+        }
+      }
+  }
+
+  
