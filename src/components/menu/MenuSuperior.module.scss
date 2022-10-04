@@ -25,6 +25,7 @@
     box-shadow: 5px 5px 10px grey;
     position: relative;
 }
+
 .divFundoMenuAgendamento{
     align-items: center;
     width: 90%;
@@ -50,7 +51,7 @@
 .divFundoTituloAgendamento{
     width: 100%;
     position: relative;
-    padding-left: 12px;
+    padding-left: 30px;
     color: #ECEF54;
     text-shadow: 2px 2px 4px #000000;
     font-size: 25px;
@@ -58,8 +59,8 @@
 
 .divCamposAgendamento{
     width: 100%;
-    background-color: white;
-    opacity: 0.3;
+    // background-color: white;
+    // opacity: 0.3;
 }
 
 .divFundoCamposAgendamento{

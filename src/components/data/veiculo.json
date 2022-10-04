@@ -1,0 +1,56 @@
+[
+    {
+        "idVeiculo": 3,
+        "imgVeiculo":"/assets/carrinho.png",
+        "placaVeiculo": "TAT-5T30",
+        "renavam": "123456789",
+        "valorHodometro": 15000,
+        "statusVeiculo": "DISPONIVEL",
+        "cidadeVeiculo": "Itaquaquecetuba",
+        "estadoVeiculo": "São Paulo",
+        "modeloDto": {
+            "idModelo": 2,
+            "descrModelo": "Carrinho honda getcar",
+            "tipoCombustivel": "FLEX",
+            "tipoMotorizacao": "MOTOR_1_4",
+            "marca": "HONDA",
+            "categoria": "SEDAN"
+        }
+    },
+    {
+        "idVeiculo": 2,
+        "imgVeiculo":"/assets/etios.jpeg",
+        "placaVeiculo": "GEV-8A30",
+        "renavam": "123456789",
+        "valorHodometro": 15000,
+        "statusVeiculo": "DISPONIVEL",
+        "cidadeVeiculo": "Itaquaquecetuba",
+        "estadoVeiculo": "São Paulo",
+        "modeloDto": {
+            "idModelo": 1,
+            "descrModelo": "Toyota Etios 2019 X 1.3",
+            "tipoCombustivel": "FLEX",
+            "tipoMotorizacao": "MOTOR_1_4",
+            "marca": "TOYOTA",
+            "categoria": "HATCH"
+        }
+    },
+    {
+        "idVeiculo": 1,
+        "imgVeiculo":"/assets/corolla.jpeg",
+        "placaVeiculo": "GEV-8A27",
+        "renavam": "123456789",
+        "valorHodometro": 15000,
+        "statusVeiculo": "DISPONIVEL",
+        "cidadeVeiculo": "Mogi das Cruzes",
+        "estadoVeiculo": "São Paulo",
+        "modeloDto": {
+            "idModelo": 1,
+            "descrModelo": "Toyota Corolla plus 2020 2.0",
+            "tipoCombustivel": "FLEX",
+            "tipoMotorizacao": "MOTOR_1_4",
+            "marca": "TOYOTA",
+            "categoria": "HATCH"
+        }
+    }
+]

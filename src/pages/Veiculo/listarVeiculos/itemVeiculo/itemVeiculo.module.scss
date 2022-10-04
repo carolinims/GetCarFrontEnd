@@ -1,0 +1,176 @@
+@import "styles/variaveis";
+@import "styles/breakpoints";
+
+.fundoImg{
+    text-align: center;
+    font-size: 18px;
+    width: 260px;
+    height: 200px;
+    padding-top: 25px;
+    padding-right: 15px;
+    img {
+      border-radius: 8px;
+      width: 90%;
+      max-height: 145px;
+    }
+}
+
+.botaoOperacoes{
+  background-color: white;
+  border-style: none;
+  &:hover {
+    background-color: #b6b839;
+    border-radius: 10%;
+    box-shadow: 2px 2px 4px #0000009F inset;
+    cursor: pointer;
+  }
+}
+
+.divDescVeiculo{
+  align-items: center;
+  display: flex;
+  font-size: 1.25rem;
+  font-weight: bold;
+  justify-content: center;
+  padding: 36px;
+}
+
+.tituloTopicoDesc{
+  font-weight: bold;
+  color: #3D1A1D;
+  font-size: 10px;
+
+}
+
+.operacoes{
+  color: black;
+  font-size: 15px;
+  padding-left: 25px;
+}
+
+.item {
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  transition: .2s ease-in;
+  width: 95%;
+  color: #3D1A1D;
+  &:hover {
+    border-color: #28704D;
+    border-style: solid;
+  }
+  // &__imagem {
+  //   text-align: center;
+  //   font-size: 15px;
+  //   width: 250px;
+  //   height: 200px;
+  //   // @media (max-width: $desktop_xsm) {
+  //   //   width: 200px
+  //   // }
+  //   img {
+  //     border-radius: 8px;
+  //     width: 90%;
+  //   }
+  // }
+  &__descricao {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 20px;
+    @media (max-width: $desktop_xsm) {
+      flex-direction: row;
+      margin-top: 20px;
+      padding: 0;
+    }
+  }
+  &__titulo {
+    h3 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    p {
+      color: $dark-grey;
+      font-size: 1.3rem;
+      font-weight: 600;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+  }
+}
+$massas: #d73b3b;
+$carnes: #30201e;
+$combos: #e6c864;
+$veganos: #80aa40;
+
+.tags {
+  border-right: solid;
+  border-right-style: dotted;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+
+  border-left: solid;
+  border-left-style: dotted;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+
+  padding-right: 15px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-bottom: 20px;
+  max-width: 700px;
+  @media (max-width: $desktop_xsm) {
+    justify-content: flex-end;
+  }
+  @media (max-width: $mobile) {
+    justify-content: flex-start;
+  }
+  > div {
+    margin: 10px;
+  }
+  // &__tipo {
+  //   align-items: center;
+  //   border-radius: 2px;
+  //   display: flex;
+  //   font-weight: bold;
+  //   height: 40px;
+  //   justify-content: center;
+  //   padding: 10px 30px;
+    // &__massas {
+    //   background-color: $massas;
+    //   color: white;
+    // }
+    // &__carnes {
+    //   background-color: $carnes;
+    //   color: white;
+    // }
+    // &__combos {
+    //   background-color: $combos;
+    // }
+    // &__veganos {
+    //   background-color: $veganos;
+    // }
+  // }
+  &__placa,
+  &__renavam,
+  &__combustivel, 
+  &__categoria,
+  &__marca  {
+    align-items: left;
+    display: flex;
+    font-size: 16px;
+    justify-content: left;
+  }
+  &__status {
+    color: orange;
+    font-size: 18px;
+  }
+}
+

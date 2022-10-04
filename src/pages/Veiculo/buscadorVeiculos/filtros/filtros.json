@@ -1,0 +1,18 @@
+[
+  {
+    "label": "Placa",
+    "id": 1
+  },
+  {
+    "label": "Grupo",
+    "id": 2
+  },
+  {
+    "label": "Modelo",
+    "id": 3
+  },
+  {
+    "label": "Marca",
+    "id": 4
+  }
+]

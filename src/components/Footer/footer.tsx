@@ -1,5 +1,4 @@
 import styles from './Footer.module.scss';
-import { ReactComponent as Logo } from 'assets/meulogo.svg';
 
 export default function Footer() {
   return (

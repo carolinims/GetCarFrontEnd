@@ -9,26 +9,21 @@
     gap: 0px;
 }
 
+.divTitulo{
+  width: 100%;
+  // position: relative;
+  // padding-left: 40px;
+  color: #3D1A1D;
+  text-shadow: 1px 1px 2px #000000;
+  font-size: 35px;
+  // background-color: yellow;
+}
+
 .titulo {
     color: $corPadraoTexto;
     font-size: 15px;
     margin-bottom: 30px;
   }
-
-.corBotaoOperacao{
-    background-color: #ECEF54;
-    color: #28704D;
-    box-shadow: 2px 4px 4px #0000009F;
-    cursor: pointer;
-    font-size: 20px;
-    width: 30%;
-    border: none;
-    border-radius: 5px;
-    &:hover {
-        background-color: #b6b839;
-        box-shadow: 2px 2px 4px #0000009F inset;
-      }
-}
 
 .container {
     padding: 50px $padding-horizontal;

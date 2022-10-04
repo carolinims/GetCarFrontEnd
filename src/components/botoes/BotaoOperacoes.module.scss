@@ -1,0 +1,14 @@
+.corBotaoOperacao{
+    background-color: #ECEF54;
+    color: #28704D;
+    box-shadow: 2px 4px 4px #0000009F;
+    cursor: pointer;
+    font-size: 20px;
+    // width: 100%;
+    border: none;
+    border-radius: 5px;
+    &:hover {
+        background-color: #b6b839;
+        box-shadow: 2px 2px 4px #0000009F inset;
+      }
+}

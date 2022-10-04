@@ -1,11 +1,9 @@
 import styles from './Login.module.scss';
 import stylesTemas from 'styles/Tema.module.scss';
 import {ReactComponent as Logo} from 'assets/meulogo.svg';
-import {CgMail} from 'react-icons/cg';
-import {CgKey} from 'react-icons/cg';
-import {CgLogIn} from 'react-icons/cg';
 import { useNavigate } from 'react-router-dom';
 import CampoInputText from 'components/campoTexto/campoInputText';
+import BotaoOperacao from 'components/botoes/botaoOperacoes';
 
 export default function Login(){
     const navigate = useNavigate();
@@ -34,7 +32,7 @@ export default function Login(){
                                 value=''
                                 onchange={() => {}}
                                 rotulo='E-mail'
-                                cor='#3D1A1D'
+                                corIcon='#3D1A1D'
                                 tipoIcon='CgMail'
                                 tamanho='100%'
                             />
@@ -43,17 +41,20 @@ export default function Login(){
                                 value=''
                                 onchange={() => {}}
                                 rotulo='Senha'
-                                cor='#3D1A1D'
+                                corIcon='#3D1A1D'
                                 tipoIcon='CgKey'
                                 tamanho='100%'
                             />
                         </div>
                         <div className={styles.formularioBotaoEntrar}>
-                            <button className={stylesTemas.corBotaoOperacao}
-                            onClick={() => navigate(`/PortalAdministrativo`)}>
-                                <CgLogIn size={20} color = '#28704D'/>
-                                Entrar
-                            </button>
+                            <BotaoOperacao
+                            type ='button'
+                            onClick={() => navigate(`/PortalAdministrativo`)}
+                            rotulo='Entrar'
+                            tipoIcon='login'
+                            corIcon='#28704D'
+                            tamanho='30%'
+                            />
                         </div>
                     </div>
                 </div>

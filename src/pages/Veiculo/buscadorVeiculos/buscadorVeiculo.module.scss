@@ -1,6 +1,7 @@
-@import 'styles/variaveis';
+@import "styles/variaveis";
+@import "styles/breakpoints";
 
-  .camposLogin{
+.buscador {
     align-items: center;
     background-color: #FFFFFF;
     border-radius: 5px;
@@ -11,7 +12,7 @@
     height: 42px;
     justify-content: space-between;
     padding: 0 15px;
-    // width: 70%;
+    width: 523px;
     opacity: 0.9;
     @media (max-width: 768) {
       width: 100%;
@@ -20,12 +21,13 @@
         background-color: white;
         // opacity: 0.3;
         border: none;
-        font-size: 10px;
+        font-size: 1.0rem;
         font-weight: bold;
+        color: #3D1A1D;
         outline: none;
         width: 100%;
         &::placeholder {
           color: $corPadraoTexto;
         }
       }
-  }
+}
