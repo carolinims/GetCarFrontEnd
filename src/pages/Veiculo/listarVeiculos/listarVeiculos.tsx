@@ -3,6 +3,8 @@ import { Veiculo } from 'types/veiculo';
 import { useState, useEffect } from 'react';
 import veiculo from 'components/data/veiculo.json';
 import ItemVeiculo from './itemVeiculo/itemVeiculo';
+import axios from 'axios';
+import https from 'https';
 
 
 interface Props {
@@ -27,7 +29,24 @@ export default function ListarVeiculos(props: Props){
     }
 
     useEffect(() => {
-        console.log("useEffect");
+        const bodyParameters = {
+            login: "carolini.silva",
+            senha: "12345"
+        };
+
+        const headers = {
+            'Content-Type': 'application/json',
+        };
+
+        axios.post( 
+            'http://localhost:8081/autentic',
+            bodyParameters, {headers})
+            .then(resp => {console.log("Aqui deu certo: " + resp)})
+            .catch(erro => {console.log("Aqui tá errado" + erro)})
+        
+        // axios.get('https://localhost:8081/veiculo/listarVeiculos')
+        //     .then(resp => {console.log(resp)})
+        //     .catch(erro => {console.log("Aqui tá errado" + erro)})
         veiculo.filter(v => {
             switch (filtro) {
                 case 1:

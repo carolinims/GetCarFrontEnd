@@ -1,6 +1,14 @@
 @import './variaveis';
 @import './breakpoints';
 
+.divConteudo{
+  padding-top: 30px;
+  padding-left: 40px;
+  width: 90%;
+  background-color: white;
+  // height: 340px;
+}
+
 .divFundoDefault{
     align-items: center;
     display: flex;

@@ -1,8 +1,9 @@
 import stylesTemas from 'styles/Tema.module.scss';
-import styles from './CadastroVeiculo.module.scss';
+import styles from './gestaoVeiculo.module.scss';
 import stylesLogin from 'components/menu/MenuSuperior.module.scss'
 import {ReactComponent as Logo} from 'assets/meulogo.svg';
 import {CgArrowLongLeft} from 'react-icons/cg';
+import {MdAddCircle} from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -10,7 +11,7 @@ import Buscador from './buscadorVeiculos/buscadorVeiculo';
 import Filtros from './buscadorVeiculos/filtros/filtro';
 import ListarVeiculos from './listarVeiculos/listarVeiculos';
 
-export default function CadastroDeVeiculo(){
+export default function GestaoDeVeiculo(){
     const navigate = useNavigate();
 
     const [busca, setBusca] = useState('');
@@ -38,6 +39,13 @@ export default function CadastroDeVeiculo(){
                     <div className={stylesTemas.divTitulo}>
                         Gestão de Veiculos
                     </div>
+                    <br/>
+                    <br/>
+                    <button
+                    onClick={() => navigate(`/CadastroDeVeiculo`)}
+                    type='button'> 
+                        <MdAddCircle size={20}/>
+                        Cadastrar Veículo</button>
                     <br/>
                     <br/>
                     <Filtros filtro={filtro} setFiltro={setFiltro}/>

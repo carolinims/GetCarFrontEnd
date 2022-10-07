@@ -16,7 +16,7 @@ export default function PortalAdministrativo(){
                     <table cellPadding={20}>
                         <td>
                             <button
-                                onClick={() => navigate(`/CadastroDeVeiculo`)}
+                                onClick={() => navigate(`/GestaoDeVeiculo`)}
                                 type='button'
                                 className={styles.botao}>
                                     <img 
