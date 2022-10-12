@@ -15,6 +15,7 @@ interface Props {
 export default function ListarVeiculos(props: Props){
     const [lista, setLista] = useState(veiculo);
     const { busca, filtro} = props;
+    const [token, setToken] = useState();
 
     function testaBusca(title: string) {
         const regex = new RegExp(busca, 'i');
@@ -41,12 +42,36 @@ export default function ListarVeiculos(props: Props){
         axios.post( 
             'http://localhost:8081/autentic',
             bodyParameters, {headers})
-            .then(resp => {console.log("Aqui deu certo: " + resp)})
+            .then(respToken => {
+                setToken(respToken.data.token);
+                console.log(token);
+            })
             .catch(erro => {console.log("Aqui tá errado" + erro)})
         
-        // axios.get('https://localhost:8081/veiculo/listarVeiculos')
+        // const header = {
+        //     Authorization: 'Testando token ',
+        // };
+
+        // axios.get('http://localhost:8081/veiculo/listarVeiculos', header)
         //     .then(resp => {console.log(resp)})
         //     .catch(erro => {console.log("Aqui tá errado" + erro)})
+
+        // axios.defaults.headers.common.Authorization = 'Bearer ';
+        // axios.defaults.headers.common.token = 'Bearer ';
+
+        axios.get(
+            `http://localhost:8081/veiculo/listarVeiculos`,
+            {
+                headers: {
+                    'AuthorizationTeste': 'Testando token',
+                }
+            }
+        );
+
+        // axios.post( 'http://localhost:8081/veiculo/cadastrar', header
+        // ).then(resp => {console.log(resp)})
+        //     .catch(erro => {console.log("Aqui tá errado" + erro)})
+
         veiculo.filter(v => {
             switch (filtro) {
                 case 1:

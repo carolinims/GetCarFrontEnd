@@ -8,25 +8,25 @@ import {CgTime} from 'react-icons/cg';
 
 interface Props {
     value: string,
-    onchange?: () => void,
     rotulo: string,
     corIcon?: string,
     tipoIcon?: string,
     tamanho: string,
     children?: React.ReactNode,
-    type?: "text" | undefined,
+    type?: "text" | "password" | undefined,
     name?: string,
     id?: string
+    setValue: React.Dispatch<React.SetStateAction<string>>;
   }
 
-export default function CampoInputText({ value, onchange, rotulo, corIcon, tipoIcon, tamanho, type, name, id }: Props){
+export default function CampoInputText({ value, rotulo, corIcon, tipoIcon, tamanho, type, name, id, setValue }: Props){
     return(
         <div className={styles.camposLogin}>
             {selecionarIcone()}
             <input 
                 width={tamanho}
                 value={value}
-                onChange = {onchange}
+                onChange = {(evento) => setValue(evento.target.value)}
                 placeholder = {rotulo}
                 type = {type}
                 name = {name}

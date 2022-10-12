@@ -1,5 +1,11 @@
 @import 'styles/variaveis';
 
+.msgRetornoErro{
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+}
+
 .fundoDefault {
     align-items: center;
     display: flex;

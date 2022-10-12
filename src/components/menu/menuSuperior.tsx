@@ -41,60 +41,52 @@ export default function MenuSuperior(){
                     </div>
                     <div className={styles.divFundoCamposAgendamento}>
                         <div className={styles.divCamposAgendamento}>
-                            {/* <div>
-                                teste
-                            </div> */}
                             <table cellSpacing={10}>
                                 <td width={'40%'}>
-                                    <CampoInputText 
+                                    {/* <CampoInputText 
                                         value=''
-                                        onchange={() => {}}
                                         rotulo='Informe local de retirada'
                                         corIcon='#3D1A1D'
                                         tipoIcon='CgPin'
                                         tamanho='70%'
-                                    />
+                                    /> */}
                                 </td>
                                 <td width={'15%'}>
-                                    <CampoInputText 
+                                    {/* <CampoInputText 
                                         value=''
-                                        onchange={() => {}}
                                         rotulo='Retirada'
                                         corIcon='#3D1A1D'
                                         tipoIcon='CgCalendar'
                                         tamanho='100%'
-                                    />
+                                    /> */}
                                 </td>
                                 <td width={'10%'}>
-                                    <CampoInputText 
+                                    {/* <CampoInputText 
                                         value=''
-                                        onchange={() => {}}
                                         rotulo='10:00'
                                         corIcon='#3D1A1D'
                                         tipoIcon='CgTime'
                                         tamanho='100%'
-                                    />
+                                    /> */}
                                 </td>
                                 <td width={'15%'}>
-                                    <CampoInputText 
+                                    {/* <CampoInputText 
                                         value=''
-                                        onchange={() => {}}
                                         rotulo='Devolução'
                                         corIcon='#3D1A1D'
                                         tipoIcon='CgCalendar'
                                         tamanho='100%'
-                                    />
+                                    /> */}
                                 </td>
                                 <td width={'10%'}>
                                     {/* <Calendar value={new Date()}/> */}
-                                    <CampoInputText 
+                                    {/* <CampoInputText 
                                         value=''
-                                        onchange={() => {}}
                                         rotulo='12:00'
                                         corIcon='#3D1A1D'
                                         tipoIcon='CgTime'
                                         tamanho='100%'
-                                    />
+                                    /> */}
                                 </td>
                                 <td width={'10%'}>
                                     <BotaoOperacao

@@ -46,9 +46,8 @@ export default function CadastroDeCliente(){
                         <label htmlFor="email">
                             E-mail: 
                         </label>
-                        <CampoInputText 
+                        {/* <CampoInputText 
                             value=''
-                            onchange={() => {}}
                             rotulo='E-mail'
                             corIcon='#3D1A1D'
                             tipoIcon='CgMail'
@@ -59,13 +58,12 @@ export default function CadastroDeCliente(){
                         />
                         <CampoInputText 
                             value=''
-                            onchange={() => {}}
                             rotulo='Senha'
                             corIcon='#3D1A1D'
                             tipoIcon='CgKey'
                             tamanho='100%'
                             type='text'
-                        />
+                        /> */}
                     </form>
                 </div>
             </div>

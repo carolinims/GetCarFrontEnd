@@ -4,9 +4,63 @@ import {ReactComponent as Logo} from 'assets/meulogo.svg';
 import { useNavigate } from 'react-router-dom';
 import CampoInputText from 'components/campoTexto/campoInputText';
 import BotaoOperacao from 'components/botoes/botaoOperacoes';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function Login(){
     const navigate = useNavigate();
+
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    const [token, setToken] = useState('');
+    const [msgRetornoErro, setMsgRetornoErro] = useState('');
+
+    function logar(){
+        console.log("Usuario: " + email + " Senha: " + senha);
+
+        const bodyParameters = {
+            login: email,
+            senha: senha
+        };
+
+        const headers = {
+            'Content-Type': 'application/json',
+        };
+
+        axios.interceptors.response.use(
+            function (response) {
+              if (response) {
+                // return success
+                if (response.status === 200 || response.status === 201) {
+                  return response;
+                }
+                // reject errors & warnings
+                return Promise.reject(response);
+              }
+              // default fallback
+              return Promise.reject(response);
+            },
+            function (error) {
+            // if the server throws an error (404, 500 etc.)
+              setMsgRetornoErro('Falha de comunicação com servidor!');
+              return Promise.reject(error);
+            }
+          );
+
+        axios.post( 
+            'http://localhost:8081/autentic',
+            bodyParameters, {headers})
+            .then(respToken => {
+                setToken(respToken.data.token);
+                console.log("token " + token);
+                navigate(`/PortalAdministrativo`);
+            })
+            .catch(erro => {
+                console.log("Post de login retornou erro: " + erro.response.data.mensagem);
+                setMsgRetornoErro(erro.response.data.mensagem);
+            })
+    }
+
     return(
         <main>
             <div className={stylesTemas.divFundoDefault}>
@@ -17,39 +71,34 @@ export default function Login(){
                             <h1 className={stylesTemas.titulo}>
                             Acesse sua conta
                             </h1>
-                            {/* <div className={styles.camposLogin}>
-                                <CgMail 
-                                size={20}
-                                color = '#3D1A1D'
-                                />
-                                <input 
-                                    value={''}
-                                    onChange = {() => {}}
-                                    placeholder = 'E-mail'
-                                />  
-                            </div> */}
                             <CampoInputText 
-                                value=''
-                                onchange={() => {}}
+                                value={email}
                                 rotulo='E-mail'
                                 corIcon='#3D1A1D'
                                 tipoIcon='CgMail'
                                 tamanho='100%'
+                                setValue={setEmail}
                             />
                             <br/>
                             <CampoInputText 
-                                value=''
-                                onchange={() => {}}
+                                value={senha}
                                 rotulo='Senha'
                                 corIcon='#3D1A1D'
                                 tipoIcon='CgKey'
                                 tamanho='100%'
+                                type="password"
+                                setValue={setSenha}
                             />
+                        </div>
+                        <div>
+                            <label className={styles.msgRetornoErro}>
+                                {msgRetornoErro}
+                            </label>
                         </div>
                         <div className={styles.formularioBotaoEntrar}>
                             <BotaoOperacao
                             type ='button'
-                            onClick={() => navigate(`/PortalAdministrativo`)}
+                            onClick={() => logar()}
                             rotulo='Entrar'
                             tipoIcon='login'
                             corIcon='#28704D'
@@ -62,6 +111,7 @@ export default function Login(){
                 <br/>
                 <br/>
             </div>
+            
         </main>
     )
 }
