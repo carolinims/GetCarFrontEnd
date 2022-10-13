@@ -12,7 +12,7 @@ export default function Login(){
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    const [token, setToken] = useState('');
+    const [token, setToken] = useState("");
     const [msgRetornoErro, setMsgRetornoErro] = useState('');
 
     function logar(){
@@ -52,7 +52,7 @@ export default function Login(){
             bodyParameters, {headers})
             .then(respToken => {
                 setToken(respToken.data.token);
-                console.log("token " + token);
+                console.log("respToke " + respToken.data.token);
                 navigate(`/PortalAdministrativo`);
             })
             .catch(erro => {

@@ -30,47 +30,15 @@ export default function ListarVeiculos(props: Props){
     }
 
     useEffect(() => {
-        const bodyParameters = {
-            login: "carolini.silva",
-            senha: "12345"
-        };
-
-        const headers = {
-            'Content-Type': 'application/json',
-        };
-
-        axios.post( 
-            'http://localhost:8081/autentic',
-            bodyParameters, {headers})
-            .then(respToken => {
-                setToken(respToken.data.token);
-                console.log(token);
-            })
-            .catch(erro => {console.log("Aqui tá errado" + erro)})
-        
-        // const header = {
-        //     Authorization: 'Testando token ',
-        // };
-
-        // axios.get('http://localhost:8081/veiculo/listarVeiculos', header)
-        //     .then(resp => {console.log(resp)})
-        //     .catch(erro => {console.log("Aqui tá errado" + erro)})
-
-        // axios.defaults.headers.common.Authorization = 'Bearer ';
-        // axios.defaults.headers.common.token = 'Bearer ';
-
         axios.get(
             `http://localhost:8081/veiculo/listarVeiculos`,
-            {
-                headers: {
-                    'AuthorizationTeste': 'Testando token',
+                {
+                    headers: {
+                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgZ2V0Q2FyIiwic3ViIjoiMSIsImlhdCI6MTY2NTYyOTkyMiwiZXhwIjoxNjY1NjMxMTIyfQ.dInl6Iz9KeB0J9jR4OtCzEhcpmFwQ2eOYo3pQFU1-Nc',
+                    } 
                 }
-            }
-        );
-
-        // axios.post( 'http://localhost:8081/veiculo/cadastrar', header
-        // ).then(resp => {console.log(resp)})
-        //     .catch(erro => {console.log("Aqui tá errado" + erro)})
+        ).then(resp => {console.log(resp)})
+            .catch(erro => {console.log("Aqui tá errado" + erro)})
 
         veiculo.filter(v => {
             switch (filtro) {
