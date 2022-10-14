@@ -6,6 +6,7 @@ import CampoInputText from 'components/campoTexto/campoInputText';
 import BotaoOperacao from 'components/botoes/botaoOperacoes';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import {MdAccountCircle} from 'react-icons/md';
 
 export default function Login(){
     const navigate = useNavigate();
@@ -51,7 +52,9 @@ export default function Login(){
             'http://localhost:8081/autentic',
             bodyParameters, {headers})
             .then(respToken => {
-                setToken(respToken.data.token);
+                // setToken(respToken.data.token);
+                sessionStorage.setItem("token", "Bearer " + respToken.data.token);
+                sessionStorage.setItem("userLogado", email);
                 console.log("respToke " + respToken.data.token);
                 navigate(`/PortalAdministrativo`);
             })
@@ -73,9 +76,9 @@ export default function Login(){
                             </h1>
                             <CampoInputText 
                                 value={email}
-                                rotulo='E-mail'
+                                rotulo='Usuário'
                                 corIcon='#3D1A1D'
-                                tipoIcon='CgMail'
+                                tipoIcon='MdAccountCircle'
                                 tamanho='100%'
                                 setValue={setEmail}
                             />

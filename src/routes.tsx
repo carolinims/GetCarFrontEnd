@@ -16,6 +16,7 @@ export default function AppRouter(){
                         <Route path='PortalAdministrativo' element={<PortalAdministrativo />}/>
                     </Route>
                     <Route index element={<Login/>}/>
+                    <Route path='Login' element={<Login/>}/>
                     <Route path='GestaoDeVeiculo' element={<GestaoDeVeiculo />} />
                     <Route path='CadastroDeCliente' element={<CadastroDeCliente />} />
                     <Route path='CadastroDeVeiculo' element={<CadastroDeVeiculo />}/>

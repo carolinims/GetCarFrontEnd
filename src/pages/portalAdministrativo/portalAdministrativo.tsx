@@ -13,29 +13,28 @@ export default function PortalAdministrativo(){
                         Portal Administrativo
                     </div>
                     <br/>
-                    <table cellPadding={20}>
-                        <td>
-                            <button
-                                onClick={() => navigate(`/GestaoDeVeiculo`)}
-                                type='button'
-                                className={styles.botao}>
-                                    <img 
-                                        className={styles.img} 
-                                        src='/assets/carrinho.png' 
-                                        alt='Carrinho' />
+                    <br/>
+                        <button
+                            onClick={() => navigate(`/GestaoDeVeiculo`)}
+                            type='button'
+                            className={styles.botao}>
+                                <img 
+                                    className={styles.img} 
+                                    src='/assets/carrinho.png' 
+                                    alt='Carrinho' />
                                 Veículos
-                            </button>
-                        </td>
-                        <td>
-                            <button
-                                onClick={() => navigate(`/CadastroDeCliente`)}
-                                type='button'
-                                className={styles.botao}>
-                                <CgSmileMouthOpen size={50} color = {'#3D1A1D'}/>
-                                Clientes
-                            </button>
-                        </td>
-                    </table>
+                        </button>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <button
+                            onClick={() => navigate(`/CadastroDeCliente`)}
+                            type='button'
+                            className={styles.botao}>
+                            <CgSmileMouthOpen size={50} color = {'#3D1A1D'}/>
+                            Clientes
+                        </button>
+                    <br/>
                     <br/>
                     <br/>
                 </div>

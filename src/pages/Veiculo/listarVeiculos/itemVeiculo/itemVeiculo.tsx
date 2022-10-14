@@ -3,13 +3,37 @@ import { useNavigate } from 'react-router-dom';
 import styles from './itemVeiculo.module.scss';
 import classNames from 'classnames';
 import { MdDelete, MdEdit, MdEditAttributes } from 'react-icons/md';
+import axios from 'axios';
 
 
 export default function ItemVeiculo(props: Veiculo) {
     const { idVeiculo, valorHodometro, renavam, placaVeiculo, imgVeiculo, statusVeiculo, 
         modeloDto} = props;
-
     const navigate = useNavigate();
+
+    function deletarVeiculo(){
+      axios.delete(
+          `http://localhost:8081/veiculo/excluir/${idVeiculo}`,
+              {
+                  headers: {
+                      Authorization: sessionStorage.getItem("token"),
+                  } 
+              }
+      ).then(resp => {
+          console.log("Veículo deletado com sucesso");
+          window.location.reload();
+      })
+      .catch(erro => {
+          console.log("Exclusão de veículos retornou erro: " + erro)
+          if(erro.response.status === 403){
+              // se der acesso negado significa que o token expirou, então retorna para login
+              sessionStorage.removeItem("token")
+              navigate('/Login');
+              console.log("Identificado 403")
+          }
+      })
+  }
+
     return (
       <div className={styles.item} onClick={() => /*navigate(`/prato/${id}`)*/{}}>
         <div className={styles.fundoImg}>
@@ -34,7 +58,9 @@ export default function ItemVeiculo(props: Veiculo) {
             <MdEdit color='green' size={30}/>
           </button>
           <button className={styles.botaoOperacoes}
-            onClick={() => {}}>
+            onClick={() => {
+              deletarVeiculo()
+            }}>
             <MdDelete color='red' size={30}/>
           </button>
         </div>

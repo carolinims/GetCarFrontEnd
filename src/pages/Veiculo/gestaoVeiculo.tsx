@@ -18,6 +18,11 @@ export default function GestaoDeVeiculo(){
     const [filtro, setFiltro] = useState<number | null>(null);
     const [ordenador, setOrdenador] = useState('');
 
+    function limpaBuscaEFiltro(){
+        setBusca('');
+        setFiltro(null);
+    }
+
     return(
         <section>
             <div className={stylesTemas.divFundoDefault}>
@@ -29,7 +34,10 @@ export default function GestaoDeVeiculo(){
                 </div>
                 <div className={styles.divConteudo}>
                     <div>
-                        <Link onClick={() => navigate(-1)} to={''}>
+                        <Link onClick={() => {
+                            limpaBuscaEFiltro()
+                            navigate(-1);
+                        }} to={''}>
                             <CgArrowLongLeft/>
                             Voltar
                         </Link>

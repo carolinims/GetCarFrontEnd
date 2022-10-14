@@ -7,8 +7,17 @@ import CampoInputText from 'components/campoTexto/campoInputText';
 import BotaoOperacao from 'components/botoes/botaoOperacoes';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
+import { useState, useEffect } from 'react';
+import {MdAccountCircle} from 'react-icons/md';
+
 
 export default function MenuSuperior(){
+    const[localRetirada, setLocalRetirada] = useState('');
+    const[dtRetirada, setDtRetirada] = useState('');
+    const[hrRetirada, setHrRetirada] = useState('');
+    const[dtDevolucao, setDtDevolucao] = useState('');
+    const[hrDevolucao, setHrDevolucao] = useState('');
+
     return(
         <header>
             <div className={stylesTemas.divFundoDefault}>
@@ -22,17 +31,19 @@ export default function MenuSuperior(){
                     <div>
                         <table className={styles.divFundoAcessoLateral}>
                             <tr>
-                                <td width={'80%'}>
+                                <td width={'90%'}>
                                     <div className={styles.divFundoTituloAgendamento}>
                                         <div>Simule um aluguel aqui</div>
                                     </div>
                                 </td>
                                 <td>
                                     <div className={styles.divAcessoLateral}>
-                                        {/* <Link to='/CadastroDeVeiculo'></Link> */}
-                                        {/* COLOCAR AQUI LOGICA PARA ALTERAR ENTRE 
-                                        USUARIO LOGADO E LINK PARA LOGIN */}
-                                        
+                                        <div>
+                                            <MdAccountCircle size={30} color={'white'}/>
+                                        </div>
+                                        <div>
+                                            {sessionStorage.getItem("userLogado")} 
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -43,50 +54,57 @@ export default function MenuSuperior(){
                         <div className={styles.divCamposAgendamento}>
                             <table cellSpacing={10}>
                                 <td width={'40%'}>
-                                    {/* <CampoInputText 
-                                        value=''
+                                    <CampoInputText 
+                                        value={localRetirada}
                                         rotulo='Informe local de retirada'
                                         corIcon='#3D1A1D'
                                         tipoIcon='CgPin'
                                         tamanho='70%'
-                                    /> */}
+                                        setValue={setLocalRetirada}
+                                    />
                                 </td>
                                 <td width={'15%'}>
-                                    {/* <CampoInputText 
-                                        value=''
+                                    <CampoInputText 
+                                        value={dtRetirada}
                                         rotulo='Retirada'
                                         corIcon='#3D1A1D'
                                         tipoIcon='CgCalendar'
                                         tamanho='100%'
-                                    /> */}
+                                        setValue={setDtRetirada}
+                                        type='Date'
+                                    />
                                 </td>
                                 <td width={'10%'}>
-                                    {/* <CampoInputText 
-                                        value=''
+                                    <CampoInputText 
+                                        value={hrRetirada}
                                         rotulo='10:00'
                                         corIcon='#3D1A1D'
                                         tipoIcon='CgTime'
                                         tamanho='100%'
-                                    /> */}
+                                        setValue={setHrRetirada}
+                                    />
                                 </td>
                                 <td width={'15%'}>
-                                    {/* <CampoInputText 
-                                        value=''
+                                    <CampoInputText 
+                                        value={dtDevolucao}
                                         rotulo='Devolução'
                                         corIcon='#3D1A1D'
                                         tipoIcon='CgCalendar'
                                         tamanho='100%'
-                                    /> */}
+                                        setValue={setDtDevolucao}
+                                        type='Date'
+                                    />
                                 </td>
                                 <td width={'10%'}>
                                     {/* <Calendar value={new Date()}/> */}
-                                    {/* <CampoInputText 
-                                        value=''
+                                    <CampoInputText 
+                                        value={hrDevolucao}
                                         rotulo='12:00'
                                         corIcon='#3D1A1D'
                                         tipoIcon='CgTime'
                                         tamanho='100%'
-                                    /> */}
+                                        setValue={setHrDevolucao}
+                                    />
                                 </td>
                                 <td width={'10%'}>
                                     <BotaoOperacao

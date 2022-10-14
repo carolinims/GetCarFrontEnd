@@ -5,6 +5,8 @@ import {CgLogIn} from 'react-icons/cg';
 import {CgPin} from 'react-icons/cg';
 import {CgCalendar} from 'react-icons/cg';
 import {CgTime} from 'react-icons/cg';
+import {MdAccountCircle} from 'react-icons/md';
+
 
 interface Props {
     value: string,
@@ -13,7 +15,7 @@ interface Props {
     tipoIcon?: string,
     tamanho: string,
     children?: React.ReactNode,
-    type?: "text" | "password" | undefined,
+    type?: "text" | "password" | "Date" | undefined,
     name?: string,
     id?: string
     setValue: React.Dispatch<React.SetStateAction<string>>;
@@ -60,6 +62,10 @@ export default function CampoInputText({ value, rotulo, corIcon, tipoIcon, taman
             case 'CgTime':
                 return(
                     <CgTime size={20} color = {corIcon}/>
+                );
+            case 'MdAccountCircle':
+                return(
+                    <MdAccountCircle size={20} color = {corIcon}/>
                 );
             default:
                 return null;
