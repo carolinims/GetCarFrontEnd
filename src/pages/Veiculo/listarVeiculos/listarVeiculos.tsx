@@ -9,6 +9,7 @@ import https from 'https';
 import { useNavigate } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { isConstructorDeclaration } from 'typescript';
+import { isGeneratorFunction } from 'util/types';
 
 interface Props {
     busca: string,
@@ -21,7 +22,8 @@ export default function ListarVeiculos(props: Props){
     const [lista, setLista] = useState<IVeiculo[]>([]);
     const { busca, filtro} = props;
     const [listaVeiculo, setListaVeiculo] = useState<IVeiculo[]>([]);
-    
+    const [isMsgListBDVeiEmpty, setIsMsgListBDVeiEmpty] = useState(false)
+
     function testaBusca(title: string) {
         const regex = new RegExp(busca, 'i');
         console.log("log aqui {}", regex.test(title));
@@ -58,6 +60,7 @@ export default function ListarVeiculos(props: Props){
         })
     }
     useEffect(() => {
+        // setIsMsgListBDVeiEmpty(false);
         carregarLista();
         listaVeiculo.filter(v => {
         switch (filtro) {
@@ -77,14 +80,22 @@ export default function ListarVeiculos(props: Props){
                 console.log("filtro default");
             break;
             }
-        });    
-    },[busca, filtro]);
+        });  
+        // if(lista.length === 0){
+        //     console.log("Passou aqui")
+        //     setIsMsgListBDVeiEmpty(true);
+        // }  
+    },[busca, filtro, isMsgListBDVeiEmpty]);
 
    return (
         <div className={styles.itens}>
           {
             lista.length === 0 ? 
-            <h3 className={styles.msgNenhumVeiculoEncontrado}> Nenhum veículo encontrado</h3> :
+            <div>
+                <h3 className={styles.msgNenhumVeiculoEncontrado}> Lista de veículos vazia! </h3> 
+                <button className={styles.linkCarregaLista} onClick={() => setIsMsgListBDVeiEmpty(true)} >Clique aqui para carregar a lista</button>
+            </div>
+            :
             lista.map(veiculo => (
             <ItemVeiculo key={veiculo.idVeiculo} {...veiculo} />))
           }

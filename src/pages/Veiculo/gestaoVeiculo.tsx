@@ -3,13 +3,13 @@ import styles from './gestaoVeiculo.module.scss';
 import stylesLogin from 'components/menu/MenuSuperior.module.scss'
 import {ReactComponent as Logo} from 'assets/meulogo.svg';
 import {CgArrowLongLeft} from 'react-icons/cg';
-import {MdAddCircle} from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Buscador from './buscadorVeiculos/buscadorVeiculo';
 import Filtros from './buscadorVeiculos/filtros/filtro';
 import ListarVeiculos from './listarVeiculos/listarVeiculos';
+import BotaoOperacao from 'components/botoes/botaoOperacoes';
 
 export default function GestaoDeVeiculo(){
     const navigate = useNavigate();
@@ -49,11 +49,19 @@ export default function GestaoDeVeiculo(){
                     </div>
                     <br/>
                     <br/>
-                    <button
+                    <BotaoOperacao
+                        type='button'
+                        onClick={() => navigate(`/CadastroDeVeiculo`)}
+                        rotulo='Cadastrar Veículo'
+                        tipoIcon='MdAddBox'
+                        corIcon='#28704D'
+                        tamanho='100%'
+                    />
+                    {/* <button
                     onClick={() => navigate(`/CadastroDeVeiculo`)}
                     type='button'> 
                         <MdAddCircle size={20}/>
-                        Cadastrar Veículo</button>
+                        Cadastrar Veículo</button> */}
                     <br/>
                     <br/>
                     <Filtros filtro={filtro} setFiltro={setFiltro}/>
