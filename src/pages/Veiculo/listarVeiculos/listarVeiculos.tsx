@@ -38,7 +38,7 @@ export default function ListarVeiculos(props: Props){
     
     function carregarLista(){
         axios.get(
-            `http://localhost:8081/veiculo/listarVeiculos`,
+            `http://getcar.eba-ztmgvkte.us-west-2.elasticbeanstalk.com/veiculo/listarVeiculos`,
                 {
                     headers: {
                         Authorization: sessionStorage.getItem("token"),

@@ -1,5 +1,31 @@
 @import 'styles/variaveis';
 
+.msgErro{
+  padding-top: 0.02px;
+  padding-left: 15px;
+  width: 90%;
+  height: 40px;
+  background-color: rgb(241, 165, 165);
+  color: red;
+}
+
+.msgSucesso{
+  padding-top: 0.02px;
+  padding-left: 15px;
+  width: 90%;
+  height: 40px;
+  background-color: rgb(185, 240, 185);
+  color: green;
+}
+
+.divBtn{
+  padding: 36px;
+  // background-color: yellow;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
 .fundoImg{
     text-align: center;
     font-size: 18px;
@@ -16,7 +42,7 @@
 }
 
 .form{
-    background-color: yellow;
+    // background-color: yellow;
     display: flex;
     flex-wrap: wrap;
     justify-content: left;

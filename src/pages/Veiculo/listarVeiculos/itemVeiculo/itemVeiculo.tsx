@@ -13,7 +13,7 @@ export default function ItemVeiculo(props: Veiculo) {
 
     function deletarVeiculo(){
       axios.delete(
-          `http://localhost:8081/veiculo/excluir/${idVeiculo}`,
+          `http://getcar.eba-ztmgvkte.us-west-2.elasticbeanstalk.com/veiculo/excluir/${idVeiculo}`,
               {
                   headers: {
                       Authorization: sessionStorage.getItem("token"),
@@ -21,7 +21,7 @@ export default function ItemVeiculo(props: Veiculo) {
               }
       ).then(resp => {
           console.log("Veículo deletado com sucesso");
-          window.location.reload();
+          // window.location.reload();
       })
       .catch(erro => {
           console.log("Exclusão de veículos retornou erro: " + erro)

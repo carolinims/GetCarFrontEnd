@@ -1,6 +1,6 @@
 import styles from './BotaoOperacoes.module.scss';
 import {CgLogIn} from 'react-icons/cg';
-import {MdAddBox} from 'react-icons/md';
+import {MdAddBox, MdSend} from 'react-icons/md';
 
 interface Props {
     type?: "button" | "submit" | "reset" | undefined,
@@ -30,6 +30,10 @@ export default function BotaoOperacao({type, onClick, rotulo, corIcon, tipoIcon,
             case 'MdAddBox':
                 return(
                     <MdAddBox size={15} color = {corIcon}/>
+                );
+            case 'MdSend':
+                return(
+                    <MdSend size={20} color = {corIcon}/>
                 );
 
             default:
