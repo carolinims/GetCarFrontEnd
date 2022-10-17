@@ -26,7 +26,7 @@ export default function CampoInputText({ value, rotulo, corIcon, tipoIcon, taman
         <div className={styles.camposLogin}>
             {selecionarIcone()}
             <input 
-                width={tamanho}
+                // width={tamanho}
                 value={value}
                 onChange = {(evento) => setValue(evento.target.value)}
                 placeholder = {rotulo}

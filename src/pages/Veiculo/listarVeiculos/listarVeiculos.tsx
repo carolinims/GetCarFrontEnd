@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { isConstructorDeclaration } from 'typescript';
 import { isGeneratorFunction } from 'util/types';
+import {useCookies} from 'react-cookie';
 
 interface Props {
     busca: string,
@@ -22,7 +23,8 @@ export default function ListarVeiculos(props: Props){
     const [lista, setLista] = useState<IVeiculo[]>([]);
     const { busca, filtro} = props;
     const [listaVeiculo, setListaVeiculo] = useState<IVeiculo[]>([]);
-    const [isMsgListBDVeiEmpty, setIsMsgListBDVeiEmpty] = useState(false)
+    const [isMsgListBDVeiEmpty, setIsMsgListBDVeiEmpty] = useState(false);
+    const [cookies, setCookie] = useCookies(['access_token']);
 
     function testaBusca(title: string) {
         const regex = new RegExp(busca, 'i');
@@ -42,6 +44,7 @@ export default function ListarVeiculos(props: Props){
                 {
                     headers: {
                         Authorization: sessionStorage.getItem("token"),
+                        // Authorization: cookies.access_token,
                     } 
                 }
         ).then(resp => resp.data).then((data) =>{
@@ -97,7 +100,7 @@ export default function ListarVeiculos(props: Props){
             </div>
             :
             lista.map(veiculo => (
-            <ItemVeiculo key={veiculo.idVeiculo} {...veiculo} />))
+            <ItemVeiculo veiculo={veiculo} key={veiculo.idVeiculo} {...veiculo} setIsMsgListBDVeiEmpty={setIsMsgListBDVeiEmpty}/>))
           }
         </div>
       );

@@ -10,12 +10,14 @@ import { useState, useEffect } from 'react';
 import CampoInputText from 'components/campoTexto/campoInputText';
 import BotaoOperacao from 'components/botoes/botaoOperacoes';
 import axios from 'axios';
+import {useCookies} from 'react-cookie';
 
 export default function CadastroDeVeiculo(){
     const navigate = useNavigate();
     const [msgRetornoErro, setMsgRetornoErro] = useState('');
     const [msgRetornoSucesso, setMsgRetornoSucesso] = useState('');
     const [submitFormulario, setSubmitFormulario] = useState(Boolean);
+    const [cookies, setCookie] = useCookies(['access_token']);
 
     const [idVeiculo, setIdVeiculo] = useState();
     const [imgVeiculo, setImgVeiculo] = useState('');
@@ -38,6 +40,7 @@ export default function CadastroDeVeiculo(){
         setMsgRetornoSucesso("");
         const headers = {
             'Content-Type': 'application/json',
+            // Authorization: cookies.access_token,
             Authorization: sessionStorage.getItem("token"),
         };
 
@@ -73,9 +76,9 @@ export default function CadastroDeVeiculo(){
         .catch(erro => {
             if(erro.response.status === 403){
                 // se der acesso negado significa que o token expirou, então retorna para login
-                sessionStorage.removeItem("token")
+                sessionStorage.removeItem("token");
                 navigate('/Login');
-                console.log("Identificado 403")
+                console.log("Identificado 403");
             }
 
             console.log("Post de cadastro de veículos retornou erro: " + erro.response.data.mensagem);
@@ -169,7 +172,7 @@ export default function CadastroDeVeiculo(){
                         <label>Valor hodômetro: </label>
                         <input className={styles.camposLogin}
                         name='valorHodometro'
-                        placeholder='ex: 20.000'
+                        placeholder='ex: 20000'
                         onChange = {(evento) => setValorHodometro(parseInt(evento.target.value))}
                         value={valorHodometro}
                         type={'text'}>
@@ -213,9 +216,10 @@ export default function CadastroDeVeiculo(){
                             onChange = {(evento) => setModeloDto({idModelo: parseInt(evento.target.value) })}
                             value={'modeloDto'}
                             >
-                            <option value={1}>Toyota Corolla plus 2020 2.0</option>
-                            <option value={2}>Toyota Etios 2019 X 1.3</option>
-                            <option value={3}>Carrinho honda getcar</option>
+                            <option value={1}>Toyota Etios 2019 X 1.3</option>
+                            <option value={2}>Carrinho Honda getcar</option>
+                            <option value={3}>FIAT Mobi 2022</option>
+                            <option value={4}>Corolla Toyota 2022 Elegance</option>
                         </select>
                     </div> 
                     <div className={styles.divBtn}>

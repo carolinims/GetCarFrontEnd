@@ -4,24 +4,35 @@ import styles from './itemVeiculo.module.scss';
 import classNames from 'classnames';
 import { MdDelete, MdEdit, MdEditAttributes } from 'react-icons/md';
 import axios from 'axios';
+import {useCookies} from 'react-cookie';
 
+interface Props {
+  veiculo: Veiculo,
+  setIsMsgListBDVeiEmpty: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-export default function ItemVeiculo(props: Veiculo) {
+export default function ItemVeiculo({
+  veiculo,
+  setIsMsgListBDVeiEmpty
+}: Props) 
+{
     const { idVeiculo, valorHodometro, renavam, placaVeiculo, imgVeiculo, statusVeiculo, 
-        modeloDto} = props;
+        modeloDto} = veiculo;
     const navigate = useNavigate();
+    const [cookies, setCookie] = useCookies(['access_token']);
 
     function deletarVeiculo(){
       axios.delete(
           `http://getcar.eba-ztmgvkte.us-west-2.elasticbeanstalk.com/veiculo/excluir/${idVeiculo}`,
               {
                   headers: {
-                      Authorization: sessionStorage.getItem("token"),
+                    Authorization: sessionStorage.getItem("token"),
                   } 
               }
       ).then(resp => {
           console.log("Veículo deletado com sucesso");
-          // window.location.reload();
+          navigate(`/PortalAdministrativo`);
+          setIsMsgListBDVeiEmpty(false);
       })
       .catch(erro => {
           console.log("Exclusão de veículos retornou erro: " + erro)

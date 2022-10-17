@@ -9,6 +9,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
 import { useState, useEffect } from 'react';
 import {MdAccountCircle} from 'react-icons/md';
+import {useCookies} from 'react-cookie';
 
 
 export default function MenuSuperior(){
@@ -17,6 +18,7 @@ export default function MenuSuperior(){
     const[hrRetirada, setHrRetirada] = useState('');
     const[dtDevolucao, setDtDevolucao] = useState('');
     const[hrDevolucao, setHrDevolucao] = useState('');
+    const [cookies, setCookie] = useCookies(['userLogado']);
 
     return(
         <header>
@@ -42,7 +44,8 @@ export default function MenuSuperior(){
                                             <MdAccountCircle size={30} color={'white'}/>
                                         </div>
                                         <div>
-                                            {sessionStorage.getItem("userLogado")} 
+                                            {/* {sessionStorage.getItem("userLogado")}  */}
+                                            {cookies.userLogado}
                                         </div>
                                     </div>
                                 </td>

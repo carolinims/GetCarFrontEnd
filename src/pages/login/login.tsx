@@ -7,6 +7,7 @@ import BotaoOperacao from 'components/botoes/botaoOperacoes';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {MdAccountCircle} from 'react-icons/md';
+import {useCookies} from 'react-cookie';
 
 export default function Login(){
     const navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function Login(){
     const [senha, setSenha] = useState('');
     const [token, setToken] = useState("");
     const [msgRetornoErro, setMsgRetornoErro] = useState('');
+    const [cookies, setCookie] = useCookies(['access_token', 'userLogado']);
 
     function logar(){
         console.log("Usuario: " + email + " Senha: " + senha);
@@ -55,6 +57,8 @@ export default function Login(){
                 // setToken(respToken.data.token);
                 sessionStorage.setItem("token", "Bearer " + respToken.data.token);
                 sessionStorage.setItem("userLogado", email);
+                // setCookie('access_token', "Bearer " + respToken.data.token);
+                // setCookie('userLogado', email)
                 console.log("respToke " + respToken.data.token);
                 navigate(`/PortalAdministrativo`);
             })
