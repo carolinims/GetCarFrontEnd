@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import CampoInputText from 'components/campoTexto/campoInputText';
 import BotaoOperacao from 'components/botoes/botaoOperacoes';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import {MdAccountCircle} from 'react-icons/md';
 import {useCookies} from 'react-cookie';
+import http from 'http/index';
 
 export default function Login(){
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ export default function Login(){
             'Content-Type': 'application/json',
         };
 
-        axios.interceptors.response.use(
+        http.interceptors.response.use(
             function (response) {
               if (response) {
                 // return success
@@ -50,8 +50,8 @@ export default function Login(){
             }
           );
 
-        axios.post( 
-            'http://getcar.eba-ztmgvkte.us-west-2.elasticbeanstalk.com/autentic',
+          http.post( 
+            'autentic',
             bodyParameters, {headers})
             .then(respToken => {
                 // setToken(respToken.data.token);

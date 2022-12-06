@@ -4,13 +4,15 @@ import IVeiculo from 'interfaces/IVeiculo';
 import { useState, useEffect } from 'react';
 // import veiculo from 'components/data/veiculo.json';
 import ItemVeiculo from './itemVeiculo/itemVeiculo';
-import axios from 'axios';
-import https from 'https';
+import http from 'http/index';
 import { useNavigate } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { isConstructorDeclaration } from 'typescript';
 import { isGeneratorFunction } from 'util/types';
 import {useCookies} from 'react-cookie';
+import { useSetRecoilState, useRecoilState } from 'recoil';
+import { listaDeVeiculosState } from "state/veiculo/veiculoAtom";
+import useAtualizarListaVeiculo from 'state/veiculo/hooks/useAtualizarlistaVeiculo';
 
 interface Props {
     busca: string,
@@ -22,9 +24,12 @@ export default function ListarVeiculos(props: Props){
     const navigate = useNavigate();
     const [lista, setLista] = useState<IVeiculo[]>([]);
     const { busca, filtro} = props;
-    const [listaVeiculo, setListaVeiculo] = useState<IVeiculo[]>([]);
+    // const [listaVeiculo, setListaVeiculo] = useState<IVeiculo[]>([]);
     const [isMsgListBDVeiEmpty, setIsMsgListBDVeiEmpty] = useState(false);
     const [cookies, setCookie] = useCookies(['access_token']);
+
+    const setListaDeVeiculosState = useSetRecoilState<IVeiculo[]>(listaDeVeiculosState);
+    const [listaDeVeiculos, getlistaDeVeiculosState] = useRecoilState(listaDeVeiculosState);
 
     function testaBusca(title: string) {
         const regex = new RegExp(busca, 'i');
@@ -39,8 +44,8 @@ export default function ListarVeiculos(props: Props){
     }
     
     function carregarLista(){
-        axios.get(
-            `http://getcar.eba-ztmgvkte.us-west-2.elasticbeanstalk.com/veiculo/listarVeiculos`,
+        http.get(
+            `veiculo/listarVeiculos`,
                 {
                     headers: {
                         Authorization: sessionStorage.getItem("token"),
@@ -48,7 +53,8 @@ export default function ListarVeiculos(props: Props){
                     } 
                 }
         ).then(resp => resp.data).then((data) =>{
-            setListaVeiculo(data.content);
+            setListaDeVeiculosState(data.content);
+            // setListaVeiculo(data.content);
             // console.log(listaVeiculo[0].placaVeiculo);
             console.log(data.content);
         })
@@ -62,32 +68,30 @@ export default function ListarVeiculos(props: Props){
             }
         })
     }
+
     useEffect(() => {
         // setIsMsgListBDVeiEmpty(false);
         carregarLista();
-        listaVeiculo.filter(v => {
+        listaDeVeiculos.filter(v => {
         switch (filtro) {
             case 1:
-                setLista(listaVeiculo.filter(v => testaBusca(v.placaVeiculo) /*&& testaFiltro(1)*/));
+                setLista(listaDeVeiculos.filter(v => testaBusca(v.placaVeiculo) /*&& testaFiltro(1)*/));
             break;
             // case 2:    
             // break;
             case 3:  
-                setLista(listaVeiculo.filter(v => testaBusca(v.modeloDto.descrModelo) /*&& testaFiltro(3)*/));
+                setLista(listaDeVeiculos.filter(v => testaBusca(v.modeloDto.descrModelo) /*&& testaFiltro(3)*/));
             break;
             case 4:   
-                setLista(listaVeiculo.filter(v => testaBusca(v.modeloDto.marca) /*&& testaFiltro(4)*/));
+                setLista(listaDeVeiculos.filter(v => testaBusca(v.modeloDto.marca) /*&& testaFiltro(4)*/));
             break;
             default:
-                setLista(listaVeiculo.filter(item => item != null));
+                setLista(listaDeVeiculos.filter(item => item != null));
                 console.log("filtro default");
             break;
             }
         });  
-        // if(lista.length === 0){
-        //     console.log("Passou aqui")
-        //     setIsMsgListBDVeiEmpty(true);
-        // }  
+
     },[busca, filtro, isMsgListBDVeiEmpty]);
 
    return (
