@@ -6,6 +6,7 @@ import PortalAdministrativo from 'pages/portalAdministrativo/portalAdministrativ
 import CadastroDeCliente from 'pages/Cliente/gestaoCliente';
 import GestaoDeVeiculo from 'pages/Veiculo/gestaoVeiculo';
 import CadastroDeVeiculo from 'pages/Veiculo/cadastroVeiculo/cadastroVeiculo';
+import EdicaoDeVeiculo from 'pages/Veiculo/editarVeiculo/editarVeiculo';
 
 export default function AppRouter(){
     return(
@@ -20,6 +21,14 @@ export default function AppRouter(){
                     <Route path='GestaoDeVeiculo' element={<GestaoDeVeiculo />} />
                     <Route path='CadastroDeCliente' element={<CadastroDeCliente />} />
                     <Route path='CadastroDeVeiculo' element={<CadastroDeVeiculo />}/>
+                    <Route path='EdicaoDeVeiculo' element={<EdicaoDeVeiculo idVeiculo={0} imgVeiculo={''} placaVeiculo={''} renavam={''} valorHodometro={0} statusVeiculo={''} cidadeVeiculo={''} estadoVeiculo={''} modeloDto={{
+                        idModelo: 0,
+                        descrModelo: '',
+                        tipoCombustivel: '',
+                        tipoMotorizacao: '',
+                        marca: '',
+                        categoria: ''
+                    }} />}/>
                 </Routes>
                 <Footer />
             </Router>

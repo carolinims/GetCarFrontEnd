@@ -23,7 +23,8 @@ export default function ItemVeiculo({
 
     function deletarVeiculo(){
       axios.delete(
-          `http://getcar.eba-ztmgvkte.us-west-2.elasticbeanstalk.com/veiculo/excluir/${idVeiculo}`,
+          // `http://getcar.eba-ztmgvkte.us-west-2.elasticbeanstalk.com/veiculo/excluir/${idVeiculo}`,
+          `http://localhost:8081/veiculo/excluir/${idVeiculo}`,
               {
                   headers: {
                     Authorization: sessionStorage.getItem("token"),
