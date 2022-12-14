@@ -9,7 +9,7 @@ import {MdImageSearch, MdOutlineSentimentVerySatisfied, MdOutlineSentimentVeryDi
 import { useState, useEffect } from 'react';
 import CampoInputText from 'components/campoTexto/campoInputText';
 import BotaoOperacao from 'components/botoes/botaoOperacoes';
-import axios from 'axios';
+import http from 'http/index';
 import {useCookies} from 'react-cookie';
 
 export default function CadastroDeVeiculo(){
@@ -59,9 +59,8 @@ export default function CadastroDeVeiculo(){
         };
         console.log(bodyParameters);
 
-        axios.post( 
-            // 'http://getcar.eba-ztmgvkte.us-west-2.elasticbeanstalk.com/veiculo/cadastrar',
-            'http://localhost:8081/veiculo/cadastrar',
+        http.post( 
+            'veiculo/cadastrar',
             bodyParameters,  {headers}
         )
         .then(resp => {

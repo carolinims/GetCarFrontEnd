@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import styles from './itemVeiculo.module.scss';
 import classNames from 'classnames';
 import { MdDelete, MdEdit, MdEditAttributes } from 'react-icons/md';
-import axios from 'axios';
+import http from 'http/index';
 import {useCookies} from 'react-cookie';
+import useAtualizarListaVeiculo from 'state/veiculo/hooks/useAtualizarlistaVeiculo';
 
 interface Props {
   veiculo: Veiculo,
@@ -20,11 +21,11 @@ export default function ItemVeiculo({
         modeloDto} = veiculo;
     const navigate = useNavigate();
     const [cookies, setCookie] = useCookies(['access_token']);
+    const atualizaHoo = useAtualizarListaVeiculo();
 
-    function deletarVeiculo(){
-      axios.delete(
-          // `http://getcar.eba-ztmgvkte.us-west-2.elasticbeanstalk.com/veiculo/excluir/${idVeiculo}`,
-          `http://localhost:8081/veiculo/excluir/${idVeiculo}`,
+    function DeletarVeiculo(){
+      http.delete(
+          `veiculo/excluir/${idVeiculo}`,
               {
                   headers: {
                     Authorization: sessionStorage.getItem("token"),
@@ -32,7 +33,7 @@ export default function ItemVeiculo({
               }
       ).then(resp => {
           console.log("Veículo deletado com sucesso");
-          navigate(`/PortalAdministrativo`);
+          // navigate(`/PortalAdministrativo`);
           setIsMsgListBDVeiEmpty(false);
       })
       .catch(erro => {
@@ -44,6 +45,7 @@ export default function ItemVeiculo({
               console.log("Identificado 403")
           }
       })
+      atualizaHoo;
   }
 
     return (
@@ -71,7 +73,7 @@ export default function ItemVeiculo({
           </button>
           <button className={styles.botaoOperacoes}
             onClick={() => {
-              deletarVeiculo()
+              DeletarVeiculo()
             }}>
             <MdDelete color='red' size={30}/>
           </button>
