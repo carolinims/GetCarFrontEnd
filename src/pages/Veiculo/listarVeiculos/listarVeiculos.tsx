@@ -11,6 +11,7 @@ import { render } from '@testing-library/react';
 import { isConstructorDeclaration } from 'typescript';
 import { isGeneratorFunction } from 'util/types';
 import {useCookies} from 'react-cookie';
+import http from 'http/index';
 
 interface Props {
     busca: string,
@@ -39,9 +40,8 @@ export default function ListarVeiculos(props: Props){
     }
     
     function carregarLista(){
-        axios.get(
-            // `http://getcar.eba-ztmgvkte.us-west-2.elasticbeanstalk.com/veiculo/listarVeiculos`,
-            'http://localhost:8081/veiculo/listarVeiculos',
+        http.get(
+            `veiculo/listarVeiculos`,
                 {
                     headers: {
                         Authorization: sessionStorage.getItem("token"),
@@ -58,6 +58,7 @@ export default function ListarVeiculos(props: Props){
             if(erro.response.status === 403){
                 // se der acesso negado significa que o token expirou, então retorna para login
                 sessionStorage.removeItem("token")
+                alert("Sua sessão expirou! realize novo login.")
                 navigate('/Login');
                 console.log("Identificado 403")
             }

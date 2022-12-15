@@ -33,7 +33,8 @@ export default function ItemVeiculo({
               }
       ).then(resp => {
           console.log("Veículo deletado com sucesso");
-          // navigate(`/PortalAdministrativo`);
+          alert("Veículo deletado com sucesso!")
+          navigate(`/PortalAdministrativo`);
           setIsMsgListBDVeiEmpty(false);
       })
       .catch(erro => {
@@ -41,11 +42,11 @@ export default function ItemVeiculo({
           if(erro.response.status === 403){
               // se der acesso negado significa que o token expirou, então retorna para login
               sessionStorage.removeItem("token")
+              alert("Sua sessão expirou! realize novo login.")
               navigate('/Login');
               console.log("Identificado 403")
           }
       })
-      atualizaHoo;
   }
 
     return (

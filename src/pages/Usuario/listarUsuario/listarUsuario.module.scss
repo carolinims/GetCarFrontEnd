@@ -1,0 +1,25 @@
+.msgNenhumUsuarioEncontrado{
+    color: #3D1A1D;  
+    font-size: 20px; 
+ }
+
+ .linkCarregaLista{
+    color: green;
+    border-color: green;
+    background-color: white;
+    border-style: none;
+    border-bottom-style: solid;
+    &:hover {
+      color: purple;
+      border-color: purple;
+      cursor: pointer;
+    }
+  }
+
+  .itens {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+  }

@@ -77,6 +77,7 @@ export default function CadastroDeVeiculo(){
             if(erro.response.status === 403){
                 // se der acesso negado significa que o token expirou, então retorna para login
                 sessionStorage.removeItem("token");
+                alert("Sua sessão expirou! realize novo login.")
                 navigate('/Login');
                 console.log("Identificado 403");
             }

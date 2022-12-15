@@ -5,20 +5,36 @@ import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import CampoInputText from 'components/campoTexto/campoInputText';
 import BotaoOperacao from 'components/botoes/botaoOperacoes';
-import Calendar from 'react-calendar';
+import Calendar, { Navigation } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
 import { useState, useEffect } from 'react';
 import {MdAccountCircle} from 'react-icons/md';
 import {useCookies} from 'react-cookie';
-
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from "recoil";
+import { datasReserva } from 'state/reserva/reservaAtom';
+import IDatas from 'interfaces/IDatas';
 
 export default function MenuSuperior(){
+    const [_, setDatasReserva] = useRecoilState(datasReserva);
     const[localRetirada, setLocalRetirada] = useState('');
     const[dtRetirada, setDtRetirada] = useState('');
     const[hrRetirada, setHrRetirada] = useState('');
     const[dtDevolucao, setDtDevolucao] = useState('');
     const[hrDevolucao, setHrDevolucao] = useState('');
     const [cookies, setCookie] = useCookies(['userLogado']);
+    const navigate = useNavigate();
+    
+    function irParaSimulacao(){
+        let iDatas: IDatas={
+            dataRetirada: dtRetirada,
+            horaRetirada: hrRetirada,
+            dataDevolucao: hrDevolucao,
+            horaDevolucao: hrDevolucao
+        }
+        setDatasReserva(iDatas);
+        navigate(`/CadastroDeReserva`)
+    }
 
     return(
         <header>
@@ -44,7 +60,7 @@ export default function MenuSuperior(){
                                             <MdAccountCircle size={30} color={'white'}/>
                                         </div>
                                         <div>
-                                            {/* {sessionStorage.getItem("userLogado")}  */}
+                                            {sessionStorage.getItem("userLogado")} 
                                             {cookies.userLogado}
                                         </div>
                                     </div>
@@ -112,7 +128,7 @@ export default function MenuSuperior(){
                                 <td width={'10%'}>
                                     <BotaoOperacao
                                     type='button'
-                                    onClick={()=>{}}
+                                    onClick={()=>{irParaSimulacao()}}
                                     rotulo='Simular'
                                     tipoIcon=''
                                     corIcon=''

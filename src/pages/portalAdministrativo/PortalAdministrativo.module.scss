@@ -6,6 +6,15 @@
     // height: 340px;
 }
 
+.divBotoes{
+  // justify-content: space-between;
+  // background-color: black;
+  display: flex;
+  gap: 50px;
+  // flex-wrap: wrap;
+
+}
+
 .botao {
     align-self: center;
     background-color: #EDE2E3;
